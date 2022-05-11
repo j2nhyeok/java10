@@ -4,9 +4,9 @@ public class quiz1712 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int A = sc.nextInt();
-		int B = sc.nextInt();
-		int C = sc.nextInt();
+		long A = sc.nextInt();
+		long B = sc.nextInt();
+		long C = sc.nextInt();
 		int i = 1;
 		if(C <= B) {
 			System.out.println(-1);
