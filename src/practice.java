@@ -1,23 +1,39 @@
- 
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
- 
-public class practice{
- 
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
- 
-		int num = Integer.parseInt(br.readLine());
-		int count = 0;
- 
-		while (num >= 5) {
-			count += num / 5;
-			num /= 5;
-		}
-		System.out.println(count);
+class Book {
+	String title;
+	String author;
+	
+	
+	void print() {
+		System.out.println("力格 : " + title + "        历磊 : " + author);
 	}
- 
 }
- 
+
+class Day{
+	int year;
+	int month;
+	int date;
+	
+	void print() {
+		System.out.println("斥/岿/老 : " + year+ " / " + month + " / " +date);
+	}
+	
+}
+
+public class practice{
+	public static void main(String[] args) {
+		Book myBook = new Book();
+		myBook.title = "blue";
+		myBook.author = "隔尔";
+		
+		
+		myBook.print();
+		
+		Day toDay = new Day();
+		toDay.year = 2022;
+		toDay.month = 05;
+		toDay.date = 27;
+		
+		
+		toDay.print();
+	}
+}
