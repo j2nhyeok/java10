@@ -18,7 +18,7 @@ public class Quiz17087 {
 		
 		
 		for(int i = 0; i < N; i++) { // 동생의 수 N만큼 반복문 실행
-			position_difference[i] = Math.abs( S - Integer.parseInt(st.nextToken())); //각각의 동생 위치에서 수빈이의 위치를 뺀 값을 position_difference[] 에 저장
+			position_difference[i] = Math.abs( S - Integer.parseInt(st.nextToken())); //각각의 동생 위치에서 수빈이의 위치를 뺀 절대값을 position_difference[] 에 저장
 		}
 		
 		if(N == 1) System.out.println(position_difference[0]); //만약 동생이 한 명 뿐이라면 동생위치에서 수빈이 위치를 빼준 값을 출력해주면 끝

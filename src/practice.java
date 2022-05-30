@@ -1,39 +1,15 @@
-class Book {
-	String title;
-	String author;
-	
-	
-	void print() {
-		System.out.println("力格 : " + title + "        历磊 : " + author);
-	}
-}
+import java.util.Scanner;
 
-class Day{
-	int year;
-	int month;
-	int date;
-	
-	void print() {
-		System.out.println("斥/岿/老 : " + year+ " / " + month + " / " +date);
-	}
-	
-}
-
-public class practice{
-	public static void main(String[] args) {
-		Book myBook = new Book();
-		myBook.title = "blue";
-		myBook.author = "隔尔";
-		
-		
-		myBook.print();
-		
-		Day toDay = new Day();
-		toDay.year = 2022;
-		toDay.month = 05;
-		toDay.date = 27;
-		
-		
-		toDay.print();
-	}
+public class practice {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] dp = new int[n+2];
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            dp[i] = (dp[i-1] + dp[i-2])%10007;
+        }
+        System.out.println(dp[n]%10007);
+    }
 }
