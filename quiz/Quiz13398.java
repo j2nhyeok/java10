@@ -9,6 +9,7 @@ public class Quiz13398 {
 	public static int dp[];
 	public static int remove_sums[];
 	public static int n;
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		
