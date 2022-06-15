@@ -1,21 +1,22 @@
+import java.util.Arrays;
 import java.util.Scanner;
-/* ì†í¥ë¯¼ 1.83 77     ì •ìƒ
-   í™©ì˜ì¡° 1.85 82     ê³¼ì²´ì¤‘
-   ë°±ìŠ¹í˜¸ 1.82 72     ì •ìƒ
-   ê°•í˜¸ë™ 1.82 136      ê³ ë„ë¹„ë§Œ  (ì „ì„±ê¸° ì‹œì ˆ)
-   ë©¸ì¹˜ 1.9 58    ì €ì²´ì¤‘
+/* ¼ÕÈï¹Î 1.83 77     Á¤»ó
+   È²ÀÇÁ¶ 1.85 82     °úÃ¼Áß
+   ¹é½ÂÈ£ 1.82 72     Á¤»ó
+   °­È£µ¿ 1.82 136      °íµµºñ¸¸  (Àü¼º±â ½ÃÀı)
+   ¸êÄ¡ 1.9 58    ÀúÃ¼Áß
    
 */
 
 public class MemberTest {
-	Scanner sc = new Scanner(System.in); // ê°’ì„ ì…ë ¥ ë°›ê¸° ìœ„í•˜ì—¬ Scanner ì‚¬ìš©
-	Member[] members = new Member[10]; // ìµœëŒ€ 10ëª…ì˜ íšŒì›ê¹Œì§€ ì €ì¥í•  ìˆ˜ ìˆëŠ” membersë³€ìˆ˜ ì„ ì–¸.
-	int selectNumber = 0; //ì—¬ëŸ¬ê°œì˜ ì„ íƒì§€ì—ì„œ ì‚¬ìš©ë¨.
-	int count = 0; // ì‹ ê·œ íšŒì› í•œ ëª…ì”© ë“±ë¡ ë ë•Œ ë§ˆë‹¤ count++; í•  ì˜ˆì •
-				   //  count ê°’ == ë“±ë¡ëœ íšŒì› ìˆ˜
+	Scanner sc = new Scanner(System.in); // °ªÀ» ÀÔ·Â ¹Ş±â À§ÇÏ¿© Scanner »ç¿ë
+	Member[] members = new Member[10]; // ÃÖ´ë 10¸íÀÇ È¸¿ø±îÁö ÀúÀåÇÒ ¼ö ÀÖ´Â membersº¯¼ö ¼±¾ğ.
+	int selectNumber = 0; //¿©·¯°³ÀÇ ¼±ÅÃÁö¿¡¼­ »ç¿ëµÊ.
+	int count = 0; // ½Å±Ô È¸¿ø ÇÑ ¸í¾¿ µî·Ï µÉ¶§ ¸¶´Ù count++; ÇÒ ¿¹Á¤
+				   //  count °ª == µî·ÏµÈ È¸¿ø ¼ö
 	
-	public MemberTest(){ //ìƒì„±ì 
-		run(); // ì£¼ìš” ê¸°ëŠ¥ì„ ë‹´ë‹¹í•˜ëŠ” run()ë©”ì†Œë“œ í˜¸ì¶œ
+	public MemberTest(){ //»ı¼ºÀÚ 
+		run(); // ÁÖ¿ä ±â´ÉÀ» ´ã´çÇÏ´Â run()¸Ş¼Òµå È£Ãâ
 	}
 	
 	
@@ -26,56 +27,76 @@ public class MemberTest {
 			}
 			
 			System.out.println("                                                  ");
-			System.out.println("=====================ëª©ë¡=========================");
-			System.out.println("1. ì‹ ê·œ íšŒì› ë“±ë¡");
-			System.out.println("2. íšŒì› ëª©ë¡");
-			System.out.println("3. ë‚˜ë„ ì •ìƒì´ ë˜ê³ ì‹¶ì–´");
-			System.out.println("4. ì¢…ë£Œ");
+			System.out.println("=====================¸ñ·Ï=========================");
+			System.out.println("1. ½Å±Ô È¸¿ø µî·Ï");
+			System.out.println("2. È¸¿ø ¸ñ·Ï");
+			System.out.println("3. ³ªµµ Á¤»óÀÌ µÇ°í½Í¾î");
+			System.out.println("4. Å°¸¦ ¿À¸§Â÷¼øÀ¸·Î Á¤·Äº¸±â");
+			System.out.println("5. Á¾·á");
 			System.out.println("=================================================");
 			System.out.println("                                                  ");
 			
-			selectNumber = Integer.parseInt(getData("ë²ˆí˜¸ ì…ë ¥ : "));
+			selectNumber = Integer.parseInt(getData("¹øÈ£ ÀÔ·Â : "));
 			
 			System.out.println();
 			
 			if(selectNumber == 1) {
-				registerMember(); // íšŒì› ë“±ë¡í•˜ëŠ” í•¨ìˆ˜ë¡œ ì´ë™
+				registerMember(); // È¸¿ø µî·ÏÇÏ´Â ÇÔ¼ö·Î ÀÌµ¿
 			}else if(selectNumber == 2) {
-				memberList(); // ë“±ë¡ëœ íšŒì› ëª©ë¡ì„ ë³¼ ìˆ˜ ìˆëŠ” í•¨ìˆ˜ë¡œ ì´ë™
+				memberList(); // µî·ÏµÈ È¸¿ø ¸ñ·ÏÀ» º¼ ¼ö ÀÖ´Â ÇÔ¼ö·Î ÀÌµ¿
 			}else if(selectNumber == 3){
 				wantNomal(); 
 			}else if(selectNumber == 4) {
-    			System.out.println("\n <ë„ì„œ ê´€ë¦¬ í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.>");
+				risingHeight();
+			}
+			else if(selectNumber == 5) {
+    			System.out.println("\n <È¸¿ø °ü¸® ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.>");
     			break;
     		}else {
-    			System.out.println("<ë²”ìœ„ì— ì—†ëŠ” ëª©ë¡ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.>");
-    			System.out.println("<ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.>");
+    			System.out.println("<¹üÀ§¿¡ ¾ø´Â ¸ñ·Ï ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.>");
+    			System.out.println("<´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.>");
     		}
 		}
 		
 	}
 	
-	// ë“±ë¡ëœ íšŒì› ëª©ë¡ì„ ë³¼ ìˆ˜ ìˆëŠ” í•¨ìˆ˜
+	private void risingHeight() {
+		Member[] members2 = new Member[count];
+		
+		for(int i = 0; i < count ; i++) {
+			members2[i] = members[i];
+		}
+		Arrays.sort(members2);
+		for(int i = 0; i < 10; i++) {
+	    	 if(members[i] != null) { // numbers[i]¿¡ µî·ÏµÈ È¸¿øÀÌ ÀÖ´Ù¸é
+	    		 System.out.println(members2[i].PrintAll()); //±× È¸¿øÀÇ ÀÌ¸§, Å°, ¸ö¹«°Ô, bmiÁö¼ö, bmi°á°ú ¸¦ Ãâ·Â
+	        }
+	     }	
+	}
+
+
+
+	// µî·ÏµÈ È¸¿ø ¸ñ·ÏÀ» º¼ ¼ö ÀÖ´Â ÇÔ¼ö
 	private void memberList() { 
 		 System.out.println("                                                  ");
 		 System.out.println("=================================================");
-	     System.out.println("                  íšŒì›ëª©ë¡");
-	     System.out.println("ì´ë¦„\tí‚¤(m)\tëª¸ë¬´ê²Œ(kg)\tbmi\të¹„ê³ ");
+	     System.out.println("                  È¸¿ø¸ñ·Ï");
+	     System.out.println("ÀÌ¸§\tÅ°(m)\t¸ö¹«°Ô(kg)\tbmi\tºñ°í");
 		 System.out.println("=================================================");
 	
 	     for(int i = 0; i < 10; i++) {
-	    	 if(members[i] != null) { // numbers[i]ì— ë“±ë¡ëœ íšŒì›ì´ ìˆë‹¤ë©´
-	    		 System.out.println(members[i].PrintAll()); //ê·¸ íšŒì›ì˜ ì´ë¦„, í‚¤, ëª¸ë¬´ê²Œ, bmiì§€ìˆ˜, bmiê²°ê³¼ ë¥¼ ì¶œë ¥
+	    	 if(members[i] != null) { // numbers[i]¿¡ µî·ÏµÈ È¸¿øÀÌ ÀÖ´Ù¸é
+	    		 System.out.println(members[i].PrintAll()); //±× È¸¿øÀÇ ÀÌ¸§, Å°, ¸ö¹«°Ô, bmiÁö¼ö, bmi°á°ú ¸¦ Ãâ·Â
 	        }
-	     }							//numbers[i]ì— ë“±ë¡ëœ íšŒì›ì´ ì—†ë‹¤ë©´ ë„˜ì–´ê°.
+	     }							//numbers[i]¿¡ µî·ÏµÈ È¸¿øÀÌ ¾ø´Ù¸é ³Ñ¾î°¨.
 	     
-		 System.out.println("=================================================");	// ë“±ë¡ëœ íšŒì›ë“¤ì„ ë‹¤ ì¶œë ¥í–ˆë‹¤ë©´     
-	     System.out.println("1.ëª©ë¡   2.í”„ë¡œê·¸ë¨ ì¢…ë£Œ"); //ëª©ë¡ìœ¼ë¡œ ëŒì•„ê°ˆì§€ í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí• ì§€ ì„ íƒì§€ê°€ ì£¼ì–´ì§.
+		 System.out.println("=================================================");	// µî·ÏµÈ È¸¿øµéÀ» ´Ù Ãâ·ÂÇß´Ù¸é     
+	     System.out.println("1.¸ñ·Ï   2.ÇÁ·Î±×·¥ Á¾·á"); //¸ñ·ÏÀ¸·Î µ¹¾Æ°¥Áö ÇÁ·Î±×·¥À» Á¾·áÇÒÁö ¼±ÅÃÁö°¡ ÁÖ¾îÁü.
 	     
-	     selectNumber = Integer.parseInt(getData("ë²ˆí˜¸ì…ë ¥ : "));
+	     selectNumber = Integer.parseInt(getData("¹øÈ£ÀÔ·Â : "));
 		
 	    if(selectNumber == 2) {
-			System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
+			System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
 		}
 	}
 
@@ -85,28 +106,28 @@ public class MemberTest {
 		
 		boolean a = true;
 		 while(a) {
-			 // ìœ„ì— countê°€ 0ë¶€í„° ì‹œì‘í–ˆìœ¼ë¯€ë¡œ 
-			String name = getData((count +  1) +"ë²ˆì§¸ ì‹ ê·œ íšŒì›ì˜ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
-			double height = Double.parseDouble(getData( (count +  1) + "ë²ˆì§¸ ì‹ ê·œ íšŒì›ì˜ í‚¤ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”"));
-			double weight =  Double.parseDouble(getData( (count +  1) +"ë²ˆì§¸ ì‹ ê·œ íšŒì›ì˜ ëª¸ë¬´ê²Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”"));
+			 // À§¿¡ count°¡ 0ºÎÅÍ ½ÃÀÛÇßÀ¸¹Ç·Î 
+			String name = getData((count +  1) +"¹øÂ° ½Å±Ô È¸¿øÀÇ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä");
+			double height = Double.parseDouble(getData( (count +  1) + "¹øÂ° ½Å±Ô È¸¿øÀÇ Å°¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä"));
+			double weight =  Double.parseDouble(getData( (count +  1) +"¹øÂ° ½Å±Ô È¸¿øÀÇ ¸ö¹«°Ô¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä"));
 			
 			for(int i = 0; i < 10; i++) {
 				
 				
-				if(members[i] == null) { //ë§Œì•½ members[i]ì— ì €ì¥ëœ íšŒì›ì´ ì—†ë‹¤ë©´
-					members[i] = new Member(name, height, weight); // ê·¸ìë¦¬ì— Në²ˆì§¸ íšŒì›ì˜ ì´ë¦„ , í‚¤ , ëª¸ë¬´ê²Œë¥¼ ì €ì¥
-					count++; // ì‹ ê·œ íšŒì›ì´ ë“±ë¡ ë˜ì—ˆìœ¼ë‹ˆ count++;
+				if(members[i] == null) { //¸¸¾à members[i]¿¡ ÀúÀåµÈ È¸¿øÀÌ ¾ø´Ù¸é
+					members[i] = new Member(name, height, weight); // ±×ÀÚ¸®¿¡ N¹øÂ° È¸¿øÀÇ ÀÌ¸§ , Å° , ¸ö¹«°Ô¸¦ ÀúÀå
+					count++; // ½Å±Ô È¸¿øÀÌ µî·Ï µÇ¾úÀ¸´Ï count++;
 					
-					for(int k = 0; k < i; k++) { // ì´ì¤‘ ë°˜ë³µë¬¸ì„ í†µí•˜ì—¬ ê¸°ì¡´ íšŒì›ê³¼ ì´ë¦„, í‚¤, ëª¸ë¬´ê²Œê°€ ê°™ì€ì§€ í™•ì¸ í•  ì˜ˆì •
+					for(int k = 0; k < i; k++) { // ÀÌÁß ¹İº¹¹®À» ÅëÇÏ¿© ±âÁ¸ È¸¿ø°ú ÀÌ¸§, Å°, ¸ö¹«°Ô°¡ °°ÀºÁö È®ÀÎ ÇÒ ¿¹Á¤
 						
-						if(members[k].equals(members[i])) { //ê¸°ì¡´ íšŒì›ê³¼ ì´ë¦„, í‚¤, ëª¸ë¬´ê²Œê°€ ê°™ë‹¤ë©´
-							members[i] = null; //ë“±ë¡í–ˆë˜ ì‹ ê·œ íšŒì›ì„ ì·¨ì†Œ
-							count--; //ë“±ë¡í–ˆë˜ ì‹ ê·œ íšŒì›ì„ ì·¨ì†Œí–ˆìœ¼ë‹ˆ ë‹¤ì‹œ count--;
+						if(members[k].equals(members[i])) { //±âÁ¸ È¸¿ø°ú ÀÌ¸§, Å°, ¸ö¹«°Ô°¡ °°´Ù¸é
+							members[i] = null; //µî·ÏÇß´ø ½Å±Ô È¸¿øÀ» Ãë¼Ò
+							count--; //µî·ÏÇß´ø ½Å±Ô È¸¿øÀ» Ãë¼ÒÇßÀ¸´Ï ´Ù½Ã count--;
 							
 							
 							System.out.println("-----------------------------------------------");
-							System.out.println((count + 1) + "ë²ˆì§¸ ì‹ ê·œ íšŒì›ì˜ ë“±ë¡ì´ ì™„ë£Œ ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
-							System.out.println("ì‚¬ìœ  : "  + (k + 1) + "ë²ˆì§¸ íšŒì›ê³¼ ê°™ì€ ì´ë¦„, í‚¤ , ëª¸ë¬´ê²Œì…ë‹ˆë‹¤.");
+							System.out.println((count + 1) + "¹øÂ° ½Å±Ô È¸¿øÀÇ µî·ÏÀÌ ¿Ï·á µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+							System.out.println("»çÀ¯ : "  + (k + 1) + "¹øÂ° È¸¿ø°ú °°Àº ÀÌ¸§, Å° , ¸ö¹«°ÔÀÔ´Ï´Ù.");
 							System.out.println("-----------------------------------------------");
 										break;
 						}
@@ -121,8 +142,8 @@ public class MemberTest {
 			}
 			
 			
-			System.out.println("< " + count + "ëª… ë“±ë¡ì™„ë£Œ" + "                        " + (10 - count) + " ëª… ë‚¨ì•˜ìŠµë‹ˆë‹¤.(ìµœëŒ€ 10ëª…) >");	
-			int b = Integer.parseInt(getData("1. ì¶”ê°€ ë“±ë¡      2. ë“±ë¡ ì¢…ë£Œ"));
+			System.out.println("< " + count + "¸í µî·Ï¿Ï·á" + "                        " + (10 - count) + " ¸í ³²¾Ò½À´Ï´Ù.(ÃÖ´ë 10¸í) >");	
+			int b = Integer.parseInt(getData("1. Ãß°¡ µî·Ï      2. µî·Ï Á¾·á"));
 			if(b == 2) {
 				break;			
 			}
@@ -134,29 +155,29 @@ public class MemberTest {
 	
 	private void wantNomal() {
 		System.out.println("------------------------------------------------------");
-		System.out.println("1.ê³ ë„ë¹„ë§Œ | 2.ì¤‘ë„ë¹„ë§Œ | 3.ê²½ë„ë¹„ë§Œ | 4.ê³¼ì²´ì¤‘ | 5.ì •ìƒ | 6.ì €ì²´ì¤‘");
+		System.out.println("1.°íµµºñ¸¸ | 2.Áßµµºñ¸¸ | 3.°æµµºñ¸¸ | 4.°úÃ¼Áß | 5.Á¤»ó | 6.ÀúÃ¼Áß");
 		System.out.println("------------------------------------------------------");
 		
 		
 		for(int i = 0 ; i < members.length; i++) {
 			if(members[i] != null) {
-				if(members[i].getNote().equals("ê³ ë„ë¹„ë§Œ(3ë‹¨ê³„ ë¹„ë§Œ)")) {
+				if(members[i].getNote().equals("°íµµºñ¸¸(3´Ü°è ºñ¸¸)")) {
 					System.out.println("  " + members[i].getName());
-				}else if(members[i].getNote().equals("ì¤‘ë„ë¹„ë§Œ (2ë‹¨ê³„ ë¹„ë§Œ)")) {
+				}else if(members[i].getNote().equals("Áßµµºñ¸¸ (2´Ü°è ºñ¸¸)")) {
 					System.out.println("\t\t   " + members[i].getName());
-				}else if(members[i].getNote().equals("ê²½ë„ë¹„ë§Œ (1ë‹¨ê³„ ë¹„ë§Œ)")) {
+				}else if(members[i].getNote().equals("°æµµºñ¸¸ (1´Ü°è ºñ¸¸)")) {
 					System.out.println("\t\t\t   " + members[i].getName());
-				}else if(members[i].getNote().equals("ê³¼ì²´ì¤‘")) {
+				}else if(members[i].getNote().equals("°úÃ¼Áß")) {
 					System.out.println("\t\t\t\t " + members[i].getName());
-				}else if(members[i].getNote().equals("ì •ìƒ")) {
+				}else if(members[i].getNote().equals("Á¤»ó")) {
 					System.out.println("\t\t\t\t\t " + members[i].getName());
-				}else if(members[i].getNote().equals("ì €ì²´ì¤‘")) {
+				}else if(members[i].getNote().equals("ÀúÃ¼Áß")) {
 					System.out.println("\t\t\t\t\t\t " + members[i].getName());
 				}			
 			}
 		}
 		
-		selectNumber = Integer.parseInt(getData("<  ì •ìƒìœ¼ë¡œ ë°”ê¾¸ê³ ì‹¶ì€ ë²ˆí˜¸ ì…ë ¥   >"));
+		selectNumber = Integer.parseInt(getData("<  Á¤»óÀ¸·Î ¹Ù²Ù°í½ÍÀº ¹øÈ£ ÀÔ·Â   >"));
 
 		switch(selectNumber) {
 			case 1: nomalCal(1);
@@ -167,23 +188,23 @@ public class MemberTest {
 					break;
 			case 4: nomalCal(4);
 					break;
-			case 5: System.out.println("ì´ë¯¸ bmiì§€ìˆ˜ê°€ ì •ìƒì…ë‹ˆë‹¤.");
+			case 5: System.out.println("ÀÌ¹Ì bmiÁö¼ö°¡ Á¤»óÀÔ´Ï´Ù.");
 					break;
 			case 6: nomalCal(6);
 					break;
 		}
 		System.out.println("------------------------------------------------------");
-	     System.out.println("1.ëª©ë¡   2.í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
+	     System.out.println("1.¸ñ·Ï   2.ÇÁ·Î±×·¥ Á¾·á");
 	     
-	     selectNumber = Integer.parseInt(getData("ë²ˆí˜¸ì…ë ¥ : "));
+	     selectNumber = Integer.parseInt(getData("¹øÈ£ÀÔ·Â : "));
 		if(selectNumber == 2) {
-			System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
+			System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
 		}
 	}
 
 	private void nomalCal(int index) {
-		String note[] = {"0", "ê³ ë„ë¹„ë§Œ(3ë‹¨ê³„ ë¹„ë§Œ)", "ì¤‘ë„ë¹„ë§Œ (2ë‹¨ê³„ ë¹„ë§Œ)", "ê²½ë„ë¹„ë§Œ (1ë‹¨ê³„ ë¹„ë§Œ)", 
-				"ê³¼ì²´ì¤‘", "ì •ìƒ", "ì €ì²´ì¤‘"};
+		String note[] = {"0", "°íµµºñ¸¸(3´Ü°è ºñ¸¸)", "Áßµµºñ¸¸ (2´Ü°è ºñ¸¸)", "°æµµºñ¸¸ (1´Ü°è ºñ¸¸)", 
+				"°úÃ¼Áß", "Á¤»ó", "ÀúÃ¼Áß"};
 		int cnt = 0;
 		for(int i = 0; i < members.length; i++) {
 			double normalWeight = 0;
@@ -194,20 +215,20 @@ public class MemberTest {
 					normalWeight = 20 * members[i].getHeight() * members[i].getHeight();
 					normalHeight = Math.sqrt(members[i].getWeight() / 20);
 					if(index == 6) {
-						System.out.println(members[i].getName() + "ë‹˜ì€ bmiê°€ ì •ìƒì´ ë˜ë ¤ë©´ ì‚´ì„ " + String.format("%.2f",Math.abs(members[i].getWeight() - normalWeight)) + "kg ì¦ëŸ‰ í•˜ì‹œê±°ë‚˜ í‚¤ë¥¼ " + String.format("%.2f",   Math.abs((normalHeight - members[i].getHeight())) * 100)+ "cm ë” ì¤„ì´ì‹­ì‹œì˜¤.");
+						System.out.println(members[i].getName() + "´ÔÀº bmi°¡ Á¤»óÀÌ µÇ·Á¸é »ìÀ» " + String.format("%.2f",Math.abs(members[i].getWeight() - normalWeight)) + "kg Áõ·® ÇÏ½Ã°Å³ª Å°¸¦ " + String.format("%.2f",   Math.abs((normalHeight - members[i].getHeight())) * 100)+ "cm ´õ ÁÙÀÌ½Ê½Ã¿À.");
 					}else {
-						System.out.println(members[i].getName() + "ë‹˜ì€ bmiê°€ ì •ìƒì´ ë˜ë ¤ë©´ ì‚´ì„ " + String.format("%.2f",members[i].getWeight() - normalWeight) + "kg ê°ëŸ‰ í•˜ì‹œê±°ë‚˜ í‚¤ë¥¼ " + String.format("%.2f",   (normalHeight - members[i].getHeight()) * 100)+ "cm ë” í‚¤ìš°ì‹­ì‹œì˜¤.");
+						System.out.println(members[i].getName() + "´ÔÀº bmi°¡ Á¤»óÀÌ µÇ·Á¸é »ìÀ» " + String.format("%.2f",members[i].getWeight() - normalWeight) + "kg °¨·® ÇÏ½Ã°Å³ª Å°¸¦ " + String.format("%.2f",   (normalHeight - members[i].getHeight()) * 100)+ "cm ´õ Å°¿ì½Ê½Ã¿À.");
 					}
 				}	
 			}
 		}
 		if(cnt == 0) {
-			System.out.println("í•´ë‹¹í•˜ëŠ” ì¸ì›ì´ ì—†ìŠµë‹ˆë‹¤.");
+			System.out.println("ÇØ´çÇÏ´Â ÀÎ¿øÀÌ ¾ø½À´Ï´Ù.");
 			System.out.println("------------------------------------------------------");
 		}
 	
 	}
-
+						
 	private String getData(String Message) {
 		System.out.println(Message);
 		return sc.next();

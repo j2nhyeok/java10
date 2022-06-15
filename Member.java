@@ -1,9 +1,9 @@
-public class Member {
-	private String name;      // ì´ë¦„
-	private double height;    // í‚¤
-	private double weight;    // ëª¸ë¬´ê²Œ
-	private double bmi;      //bmi ì§€ìˆ˜ 
-	private String note;   //bmi ê²°ê³¼ 
+public class Member implements Comparable<Member> {
+	private String name;      // ÀÌ¸§
+	private double height;    // Å°
+	private double weight;    // ¸ö¹«°Ô
+	private double bmi;      //bmi Áö¼ö 
+	private String note;   //bmi °á°ú 
 	
 	
 	public Member(String name, double height, double weight)
@@ -11,24 +11,24 @@ public class Member {
 		this.name = name;
 		this.height = height;
 		this.weight = weight;
-		this.bmi = getBmi(); 	//getBmië©”ì„œë“œë¥¼ í˜¸ì¶œí•˜ì—¬ returnê°’ì„ ì¸ìŠ¤í„´ìŠ¤ì˜ bmiê°’ì— ì €ì¥.
-		this.note = getNote();	//getNoteë©”ì„œë“œë¥¼ í˜¸ì¶œí•˜ì—¬ returnê°’ì„ ì¸ìŠ¤í„´ìŠ¤ì˜ noteê°’ì— ì €ì¥.
+		this.bmi = getBmi(); 	//getBmi¸Ş¼­µå¸¦ È£ÃâÇÏ¿© return°ªÀ» ÀÎ½ºÅÏ½ºÀÇ bmi°ª¿¡ ÀúÀå.
+		this.note = getNote();	//getNote¸Ş¼­µå¸¦ È£ÃâÇÏ¿© return°ªÀ» ÀÎ½ºÅÏ½ºÀÇ note°ª¿¡ ÀúÀå.
 	}
 	
-	public String getNote() { //BMI ì§€ìˆ˜ì— ë”°ë¼ ê²°ê³¼ ê°’ì„ ë¦¬í„´.
-		if(35 <= this.bmi) return "ê³ ë„ë¹„ë§Œ(3ë‹¨ê³„ ë¹„ë§Œ)";
-		else if(30 <= this.bmi) return "ì¤‘ë„ë¹„ë§Œ (2ë‹¨ê³„ ë¹„ë§Œ)";
-		else if(25 <= this.bmi) return "ê²½ë„ë¹„ë§Œ (1ë‹¨ê³„ ë¹„ë§Œ)";
-		else if(23 <= this.bmi) return "ê³¼ì²´ì¤‘";
-		else if(18.5 <= this.bmi && this.bmi < 23) return "ì •ìƒ";
-		else return "ì €ì²´ì¤‘";
+	public String getNote() { //BMI Áö¼ö¿¡ µû¶ó °á°ú °ªÀ» ¸®ÅÏ.
+		if(35 <= this.bmi) return "°íµµºñ¸¸(3´Ü°è ºñ¸¸)";
+		else if(30 <= this.bmi) return "Áßµµºñ¸¸ (2´Ü°è ºñ¸¸)";
+		else if(25 <= this.bmi) return "°æµµºñ¸¸ (1´Ü°è ºñ¸¸)";
+		else if(23 <= this.bmi) return "°úÃ¼Áß";
+		else if(18.5 <= this.bmi && this.bmi < 23) return "Á¤»ó";
+		else return "ÀúÃ¼Áß";
 		
 	}
-	public double getBmi() { //BMI ê³µì‹ == ( ëª¸ë¬´ê²Œ / í‚¤^2 )
-		return  Math.round((weight/((height) * (height))) * 100) / 100.0;  //Math.round()ëŠ” ë°˜ì˜¬ë¦¼ í•  ë•Œ ì‚¬ìš©í•˜ëŠ” ë©”ì„œë“œ
-																		   //int a = 22.2141 ì´ë¼ê³  ê°€ì •. ->  Math.round(a * 100)ì˜ ê°’ì€ 2221.41ì˜ ì†Œìˆ˜ ì²«ì§¸ ìë¦¬ì—ì„œ ë°˜ì˜¬ë¦¼í•˜ì—¬
-																		   // 2221ì´ ë˜ëŠ”ë° ì´ ê°’ì„ ë˜ 100.0ìœ¼ë¡œ ë‚˜ëˆ„ë©´ 22.21ì´ ë˜ë¯€ë¡œ ì†Œìˆ˜ ë‘˜ ì§¸ìë¦¬ê¹Œì§€ í‘œí˜„ì´ ê°€ëŠ¥í•˜ë‹¤.
-																		   // 100ì´ ì•„ë‹Œ 100.0ìœ¼ë¡œ ë‚˜ëˆ ì£¼ëŠ” ì´ìœ  ë°˜í™˜í˜•ì˜ íƒ€ì…ì´ double;
+	public double getBmi() { //BMI °ø½Ä == ( ¸ö¹«°Ô / Å°^2 )
+		return  Math.round((weight/((height) * (height))) * 100) / 100.0;  //Math.round()´Â ¹İ¿Ã¸² ÇÒ ¶§ »ç¿ëÇÏ´Â ¸Ş¼­µå
+																		   //int a = 22.2141 ÀÌ¶ó°í °¡Á¤. ->  Math.round(a * 100)ÀÇ °ªÀº 2221.41ÀÇ ¼Ò¼ö Ã¹Â° ÀÚ¸®¿¡¼­ ¹İ¿Ã¸²ÇÏ¿©
+																		   // 2221ÀÌ µÇ´Âµ¥ ÀÌ °ªÀ» ¶Ç 100.0À¸·Î ³ª´©¸é 22.21ÀÌ µÇ¹Ç·Î ¼Ò¼ö µÑ Â°ÀÚ¸®±îÁö Ç¥ÇöÀÌ °¡´ÉÇÏ´Ù.
+																		   // 100ÀÌ ¾Æ´Ñ 100.0À¸·Î ³ª´²ÁÖ´Â ÀÌÀ¯ ¹İÈ¯ÇüÀÇ Å¸ÀÔÀÌ double;
 	}
 
 
@@ -37,7 +37,7 @@ public class Member {
 
 	
 	
-	//ë§Œì•½ ì‹ ê·œ íšŒì›ì˜ ì´ë¦„, í‚¤, ëª¸ë¬´ê²Œê°€ ì–´ë–¤ íšŒì›ì˜ ì´ë¦„, í‚¤, ëª¸ë¬´ê²Œì™€ ê°™ë‹¤ë©´ ì‹ ê·œ íšŒì› ë“±ë¡ ë¶ˆê°€
+	//¸¸¾à ½Å±Ô È¸¿øÀÇ ÀÌ¸§, Å°, ¸ö¹«°Ô°¡ ¾î¶² È¸¿øÀÇ ÀÌ¸§, Å°, ¸ö¹«°Ô¿Í °°´Ù¸é ½Å±Ô È¸¿ø µî·Ï ºÒ°¡
 	public boolean equals(Object obj) {
 		if(obj instanceof Member) {
 			Member temp = (Member) obj;
@@ -69,9 +69,21 @@ public class Member {
 	
 	
 
-	public String PrintAll() { //ìˆœì„œëŒ€ë¡œ ì´ë¦„ , í‚¤ , ëª¸ë¬´ê²Œ , bmiì§€ìˆ˜, bmi ê²°ê³¼ê°’ì„ ë¦¬í„´.
+	public String PrintAll() { //¼ø¼­´ë·Î ÀÌ¸§ , Å° , ¸ö¹«°Ô , bmiÁö¼ö, bmi °á°ú°ªÀ» ¸®ÅÏ.
 		// TODO Auto-generated method stub
 		return this.name + "\t" + this.height + "\t" + this.weight + "\t\t" + this.bmi + "\t" + this.note;
+	}
+
+	@Override
+	public int compareTo(Member other) {
+	
+		if(this.height > other.height) {
+			return 1;
+		}else if( this.height < other.height) {
+			return -1;
+		}else  return 0;
+		
+	
 	}
 	
 	
